@@ -119,4 +119,5 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# 장고가 기본적으로 사용하는 User가 아닌 내가 만든 User를 사용하도록 설정
 AUTH_USER_MODEL = 'accounts.User'
