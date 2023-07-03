@@ -20,6 +20,7 @@ def signup(request):
 
     return render(request, 'accounts/signup.html', context)
 
+
 def login(request):
     if request.method == 'POST':
         form = CustomAuthenticationForm(request, request.POST)
