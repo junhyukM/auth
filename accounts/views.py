@@ -26,7 +26,10 @@ def login(request):
         form = CustomAuthenticationForm(request, request.POST)
         if form.is_valid():
             auth_login(request, form.get_user())
-            return redirect('posts:index')
+            return redirect(request.GET.get('next') or 'posts:index')
+            #1. next 인자가 있을 때 => 'posts/create' or 'posts:index' => 'posts/create'
+            #2. next 인자가 없을 때 => None or 'posts:index' => 'posts:index'
+            
     else:
         form = CustomAuthenticationForm()
 
