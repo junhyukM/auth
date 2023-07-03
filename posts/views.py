@@ -47,6 +47,7 @@ def detail(request, id):
     return render(request, 'posts/detail.html', context)
 
 @require_POST
+@login_required
 def comments_create(request, id):
     post = Post.objects.get(id=id)
 
