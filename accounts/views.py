@@ -22,6 +22,10 @@ def signup(request):
 
 
 def login(request):
+    # 이미 로그인을 한 상태인데 로그인을 다시 하는경우
+    if request.user.is_authenticated:
+        return redirect('posts:index')
+
     if request.method == 'POST':
         form = CustomAuthenticationForm(request, request.POST)
         if form.is_valid():
@@ -29,7 +33,7 @@ def login(request):
             return redirect(request.GET.get('next') or 'posts:index')
             #1. next 인자가 있을 때 => 'posts/create' or 'posts:index' => 'posts/create'
             #2. next 인자가 없을 때 => None or 'posts:index' => 'posts:index'
-            
+
     else:
         form = CustomAuthenticationForm()
 
